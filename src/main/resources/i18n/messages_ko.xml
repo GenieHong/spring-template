@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="OK">정상</entry>
+    <entry key="NG">오류</entry>
+    <entry key="msg000001">안녕하세요</entry>
+</properties>

@@ -1,0 +1,82 @@
+info:
+  app:
+    name: KTT Template Project
+    version: ${project.version}
+spring:
+  application:
+    name: KTT_TEMPLATE
+  http:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+    gzip:
+      enabled: false
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    initialize: true
+security:
+  oauth2:
+    resource:
+      id: GW-API
+      loadBalanced: true
+      jwt:
+        keyValue: -----BEGIN PUBLIC KEY-----
+                  MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlc3RbYQHqC4gL+yHX8Hc
+                  elMZLYY37R+TSaJyGWKD8rXEwT1FHsllLjWr22oOyOpbBfKy/dfCBA6ePZ2cOAK9
+                  iCJJsFvqqkL9CT3IyRo7w28j42csaUzROUaF/euxNv3U8ytFPF3xy/MpM9MVFHmt
+                  qc1YCaCgL8GCNGXsHjxSHS3t8DhWDUMh2ODsYMZHzzYuucVyyQ8GhPwRWQyWaJqm
+                  +kegxy65jp1LVeE4xNzo+ozDXpozQwX2rwauOq3CoQHWvoARUMX7RtmehyeDPs3I
+                  WPAoYEqFiQOBHHieTNYm5Wg8pdwz8D8IrwL+nAuqjYb7v1tB8TRWYDiBsaBJzuC9
+                  cQIDAQAB
+                  -----END PUBLIC KEY-----
+  user:
+    name: admin
+    password: 1234
+multipart:
+  maxRequestSize: 500Mb
+  maxFileSize: 100Mb
+logging:
+  config: classpath:logback.xml
+---
+spring:
+  profiles: production
+datasource:
+  url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  username: sa
+  password:
+  driverClassName: org.h2.Driver
+  validationQuery: SELECT 1
+  maxTotal: 2
+  maxIdle: 1
+  initialSize: 1
+  defaultAutoCommit: false
+---
+spring:
+  profiles: staging
+datasource:
+  url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  username: sa
+  password:
+  driverClassName: org.h2.Driver
+  validationQuery: SELECT 1
+  maxTotal: 2
+  maxIdle: 1
+  initialSize: 1
+  defaultAutoCommit: false
+---
+spring:
+  profiles: development
+datasource:
+  url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  username: sa
+  password:
+  driverClassName: org.h2.Driver
+  validationQuery: SELECT 1
+  maxTotal: 2
+  maxIdle: 1
+  initialSize: 1
+  defaultAutoCommit: false
